@@ -81,8 +81,7 @@ const sendEmail = async (userRecv, email, resetLink) => {
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com', // Máy chủ SMTP
             port: 465, // Cổng SMTP
-            secure: false, // true cho cổng 465
-            service: 'Gmail',
+            secure: true, // true cho cổng 465
             auth: {
                 user: process.env.EMAIL_USER, // Địa chỉ email của bạn
                 pass: process.env.EMAIL_PASS, // Mật khẩu hoặc ứng dụng mật khẩu
