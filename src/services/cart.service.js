@@ -22,7 +22,7 @@ class CartService{
     }
 
     static deleteItem = async({userId}, productId) => {
-        if(productId)
+        if(!productId)
             throw new BadRequestError('Bad request')
         const findCart = await findCartByUserId(userId)
         if(!findCart)
