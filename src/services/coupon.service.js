@@ -22,6 +22,8 @@ class CouponService{
     }
 
     static updateCoupon = async(couponId, coupon) => {
+        if(couponId)
+            throw new BadRequestError('Bad request')
         const checkCoupon = await findCouponById(couponId)
         if(!checkCoupon)
             throw new NotFoundError('Coupon not found')
@@ -41,6 +43,8 @@ class CouponService{
 
 
     static deleteCoupon = async({userId}, couponId) => {
+        if(couponId)
+            throw new BadRequestError('Bad request')
         const findCoupon = await findCouponById(couponId)
         if(!findCoupon)
             throw new NotFoundError('Coupon not found')
@@ -82,6 +86,8 @@ class CouponService{
     }
 
     static getCouponByShop = async(shopId) => {
+        if(shopId)
+            throw new BadRequestError('Bad request')
         const findCoupon = await findCouponByShopId(shopId)
         if(!findCoupon)
             throw new NotFoundError('No coupons found for this shop')
