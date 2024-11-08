@@ -54,7 +54,7 @@ class UserService{
     }
 
     static handlerRefreshToken = async({userId, username} ,refreshToken) => {
-        if(!userId || !username ||!refreshToken)
+        if(!refreshToken)
             throw new BadRequestError('Bad request')
         const checkReuse = await findRefreshTokensUsedByRT(refreshToken)
         if(checkReuse){
