@@ -22,6 +22,8 @@ class CartService{
     }
 
     static deleteItem = async({userId}, productId) => {
+        if(productId)
+            throw new BadRequestError('Bad request')
         const findCart = await findCartByUserId(userId)
         if(!findCart)
             throw new NotFoundError('Cart not found')
