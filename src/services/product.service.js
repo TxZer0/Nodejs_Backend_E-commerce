@@ -41,6 +41,8 @@ class ProductService{
     }
 
     static deleteProduct = async(productId, {userId}) => {
+        if(productId)
+            throw new BadRequestError('Bad request')
         const findProduct = await findProductById(productId)
         if(!findProduct)
             throw new NotFoundError('Product not found')
@@ -58,6 +60,8 @@ class ProductService{
     }
 
     static updateProduct = async(productId, {userId}, product) => {
+        if(productId)
+            throw new BadRequestError('Bad request')
         const findProduct = await findProductById(productId)
         if(!findProduct)
             throw new NotFoundError('Product not found')
@@ -81,6 +85,8 @@ class ProductService{
     }
 
     static publishProduct = async(productId, {userId}) => {
+        if(productId)
+            throw new BadRequestError('Bad request')
         const findProduct = await findProductById(productId)
         if(!findProduct)
             throw new NotFoundError('Product not found')
@@ -95,6 +101,8 @@ class ProductService{
     }
 
     static unPublishProduct = async(productId, {userId}) => {
+        if(productId)
+            throw new BadRequestError('Bad request')
         const findProduct = await findProductById(productId)
         if(!findProduct)
             throw new NotFoundError('Product not found')
