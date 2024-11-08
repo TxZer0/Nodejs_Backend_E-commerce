@@ -7,6 +7,8 @@ const { pickProperties, createTokenPair, updateKeyToken, updateKeyTokenV2, sendE
 
 class UserService{
     static signup = async({username, email, password}) => {
+        if(!username || !email || !password)
+            throw new BadRequestError('Bad request')
         const checkUserByEmail = await findUserByEmail({email})
         if(checkUserByEmail) 
             throw new BadRequestError('Email has already been registered')
@@ -26,6 +28,8 @@ class UserService{
     }
 
     static login = async({email, password}) => {
+        if(!email || !password)
+            throw new BadRequestError('Bad request')
         const checkUserByEmail = await findUserByEmail({email})
         if(!checkUserByEmail) 
             throw new NotFoundError('Incorrect email or password')
@@ -50,6 +54,8 @@ class UserService{
     }
 
     static handlerRefreshToken = async({userId, username} ,refreshToken) => {
+        if(!userId || !username ||!refreshToken)
+            throw new BadRequestError('Bad request')
         const checkReuse = await findRefreshTokensUsedByRT(refreshToken)
         if(checkReuse){
             await deleteKeyTokenById(checkReuse._id)
@@ -72,6 +78,8 @@ class UserService{
     }
 
     static forgotPassword = async(email) => {
+        if(!email)
+            throw new BadRequestError('Bad request')
         const findUByEmail = await findUserByEmail({email})
         if(!findUByEmail)
             throw new BadRequestError('Invalid email address')
@@ -82,12 +90,16 @@ class UserService{
     }
 
     static resetPassword = async({token, id: userId}) => {
+        if(!token || !userId)
+            throw new BadRequestError('Bad request')
         const checkTokenValid = await checkToken({token, userId})
         if(!checkTokenValid)
             throw new NotFoundError('Invalid reset token')
     }
 
     static changePassword = async({token, id: userId}, {password, verifyPassword}) =>{
+        if(!token || !userId || !password || !verifyPassword)
+            throw new BadRequestError('Bad request')
         const checkTokenValid = await checkToken({token, userId})
         if(!checkTokenValid)
             throw new BadRequestError('Bad request')
