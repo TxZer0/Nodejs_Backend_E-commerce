@@ -9,9 +9,9 @@ const router = express.Router()
 
 router.use(asyncHandler(checkApiKey))
 
-router.use('/v1/api/user', user)
-router.use('/v1/api/product', product)
-router.use('/v1/api/coupon', discount)
-router.use('/v1/api/cart', cart)
+router.use('/api/v1/user', user)
+router.use('/api/v1/product', product)
+router.use('/api/v1/coupon', discount)
+router.use('/api/v1/cart', cart)
 
 module.exports = router
