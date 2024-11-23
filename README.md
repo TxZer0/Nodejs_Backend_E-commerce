@@ -28,23 +28,9 @@
     npm i 
 ```
 
-3. Configure environment variables: (Replace the placeholders with your own values)
+3. Configure environment variables and add your email: 
 ```
-    APP_NAME=Ecommerce
-    HOST=localhost
-    PORT=8080
-
-    API_KEY=your_api_key_here
-    ACCESS_TOKEN_SECRET=your_access_token_secret_here
-    REFRESH_TOKEN_SECRET=your_refresh_token_secret_here
-    RESET_SECRET=your_reset_secret_here
-
-    DEV_DB_HOST=your_db_host_here
-    DEV_DB_PORT=27017
-    DEV_DB_NAME=your_db_name_here
-
-    EMAIL_USER=your_email_here
-    EMAIL_PASS=your_email_password_here
+    cp .env.example .env
 ```
 
 4. Run the application:
